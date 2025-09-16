@@ -1,6 +1,6 @@
 import type { FastifyInstance, FastifyPluginAsync } from "fastify";
 import { reelsService } from "./reels.service";
-import { CreateGETDto } from "./reels.types";
+import { CreateReelDto } from "./reels.types";
 
 const reelsRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
   const service = reelsService(fastify);

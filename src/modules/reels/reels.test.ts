@@ -26,7 +26,7 @@ describe("GET /reels/grid", () => {
     ];
 
     // To satisfy TypeScript, our mock must match the full shape of the
-    // 'transactions' dependency, including all methods on 'posts'.
+    // 'transactions' dependency, including all methods on 'reels'.
     app.decorate("transactions", {
       posts: {
         create: jest.fn(),

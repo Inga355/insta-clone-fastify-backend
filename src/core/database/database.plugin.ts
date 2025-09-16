@@ -31,7 +31,7 @@ async function databasePluginHelper(fastify: FastifyInstance) {
     thumbnail_url TEXT NOT NULL,
     caption TEXT,
     views INTEGER DEFAULT 0,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    rated_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
 `);
 

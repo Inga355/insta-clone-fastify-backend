@@ -14,9 +14,12 @@ describe("POST /posts", () => {
 
     app.decorate("transactions", {
       posts: {
-        getById: jest.fn(),
+        create: jest.fn(),
         getAll: jest.fn(),
-        create: jest.fn().mockReturnValue(createdPost),
+        getById: jest.fn(),
+      },
+      reels: {
+        getAll: jest.fn(),
       },
     });
 
