@@ -5,11 +5,9 @@ import { CreateGETDto } from "./reels.types";
 const reelsRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
   const service = reelsService(fastify);
 
-  fastify.post<{ Body: CreateGETDto }>("/reels", async (request, reply) => {
-    const newPost = await service.create(request.body);
-
-    // Return a 201 Created status code with the new post object
-    return reply.code(201).send(newPost);
+  fastify.get("/reels/grid", async (_request, _reply) => {
+    const reels = await service.getAll();
+    return reels;
   });
 };
 

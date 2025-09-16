@@ -10,6 +10,10 @@ function createTransactionHelpers(db: Database) {
     createPost: db.prepare(
       "INSERT INTO posts (img_url, caption) VALUES (@img_url, @caption) RETURNING *"
     ),
+    // Optional: reels table may not exist in all environments; adjust accordingly
+    getAllReels: db.prepare(
+      "SELECT id, video_url, thumbnail_url, caption, views FROM reels"
+    ),
   };
 
   const posts = {
@@ -24,8 +28,15 @@ function createTransactionHelpers(db: Database) {
     },
   };
 
+  const reels = {
+    getAll: () => {
+      return statements.getAllReels.all();
+    },
+  };
+
   return {
     posts,
+    reels,
   };
 }
 
