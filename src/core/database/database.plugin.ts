@@ -33,6 +33,13 @@ async function databasePluginHelper(fastify: FastifyInstance) {
     views INTEGER DEFAULT 0,
     rated_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
+  CREATE TABLE IF NOT EXISTS tagged (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    img_url TEXT NOT NULL,
+    caption TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    user_tagged TEXT NOT NULL
+  );
 `);
 
   const transactions = createTransactionHelpers(db);
