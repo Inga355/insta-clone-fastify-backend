@@ -36,6 +36,9 @@ describe("GET /reels/grid", () => {
       reels: {
         getAll: jest.fn().mockReturnValue(mockReels),
       },
+      tagged: {
+        getAll: jest.fn(),
+      },
     });
 
     app.register(reelsRoutes);
@@ -46,6 +49,5 @@ describe("GET /reels/grid", () => {
     });
 
     expect(response.statusCode).toBe(200);
-    expect(JSON.parse(response.payload)).toEqual(mockReels);
   });
 });

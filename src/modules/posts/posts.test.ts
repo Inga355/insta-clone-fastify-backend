@@ -10,15 +10,18 @@ describe("POST /posts", () => {
       caption: "A brand new post from our test!",
     };
 
-    const createdPost = { ...newPostPayload, id: 1 };
+    const createdPost = { ...newPostPayload, id: 5};
 
     app.decorate("transactions", {
       posts: {
-        create: jest.fn(),
+        create: jest.fn().mockReturnValue(createdPost),
         getAll: jest.fn(),
         getById: jest.fn(),
       },
       reels: {
+        getAll: jest.fn(),
+      },
+      tagged: {
         getAll: jest.fn(),
       },
     });
