@@ -30,8 +30,7 @@ async function databasePluginHelper(fastify: FastifyInstance) {
     video_url TEXT NOT NULL,
     thumbnail_url TEXT NOT NULL,
     caption TEXT,
-    views INTEGER DEFAULT 0,
-    rated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    views INTEGER DEFAULT 0
   );
   CREATE TABLE IF NOT EXISTS tagged (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -44,7 +43,7 @@ async function databasePluginHelper(fastify: FastifyInstance) {
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     cover_img_url TEXT NOT NULL,
     title TEXT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
 `);
 

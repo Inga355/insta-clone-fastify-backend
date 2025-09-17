@@ -24,7 +24,7 @@ function createTransactionHelpers(db: Database) {
     getHighlightById: db.prepare("SELECT * FROM highlights WHERE id = ?"),
     getAllHighlights: db.prepare("SELECT * FROM highlights"),
     createHighlight: db.prepare(
-      "INSERT INTO highlights (img_url, title) VALUES (@img_url, @title) RETURNING *"
+      "INSERT INTO highlights (cover_img_url, title) VALUES (@cover_img_url, @title) RETURNING *"
     ),
   };
 
