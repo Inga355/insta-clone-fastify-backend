@@ -10,11 +10,14 @@ const highlightsService = (fastify: FastifyInstance) => {
     },
     create: async (highlightData: CreateHighlightDto) => {
       fastify.log.info(`Creating a new highlight`);
-      // This will use the MOCK `transactions` in our test,
-      // and the REAL `transactions` in our live application.
       const highlight = fastify.transactions.highlights.create(highlightData);
       return highlight;
     },
+    getById: async (id: number) => {
+      fastify.log.info(`Fetching highlight by Id`);
+      const highlight = fastify.transactions.highlights.getById(id);
+      return highlight;
+    }
   };
 };
 
