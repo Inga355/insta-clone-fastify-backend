@@ -40,6 +40,12 @@ async function databasePluginHelper(fastify: FastifyInstance) {
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     user_tagged TEXT NOT NULL
   );
+  CREATE TABLE IF NOT EXISTS highlights (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cover_img_url TEXT NOT NULL,
+    title TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  );
 `);
 
   const transactions = createTransactionHelpers(db);

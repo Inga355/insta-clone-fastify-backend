@@ -1,7 +1,12 @@
 import type { FastifyPluginAsync } from "fastify";
+import { highlightsService } from "./highlights.service";
 
-// This is a placeholder so our test can import the file.
-// It doesn't do anything yet.
-const highlightsRoutes: FastifyPluginAsync = async (fastify) => {};
+const highlightsRoutes: FastifyPluginAsync = async (fastify) => {
+  const service = highlightsService(fastify);
+  fastify.get("/highlights", async (_request, _reply) => {
+    const highlights = await service.getAll();
+    return highlights;
+  });
+};
 
 export { highlightsRoutes };
