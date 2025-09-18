@@ -24,6 +24,11 @@ describe("POST /posts", () => {
       tagged: {
         getAll: jest.fn(),
       },
+      highlights: {
+        create: jest.fn(),
+        getAll: jest.fn(),
+        getById: jest.fn(),
+      },
     });
 
     app.register(postsRoutes);
