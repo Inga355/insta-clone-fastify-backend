@@ -29,6 +29,11 @@ describe("GET /tagged", () => {
         tagged: {
           getAll: jest.fn().mockReturnValue(mockTagged),
         },
+        highlights: {
+          create: jest.fn(),
+          getAll: jest.fn(),
+          getById: jest.fn(),
+        },
       });
 
     app.register(taggedRoutes);
