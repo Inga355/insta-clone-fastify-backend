@@ -1,14 +1,14 @@
-import Fastify from "fastify";
-import { postsRoutes } from "./posts.routes";
+import Fastify from "fastify"
+import { postsRoutes } from "./posts.routes"
 
 describe("POST /posts", () => {
-  it("should create a new post and return it with a 201 status code", async () => {
-    const app = Fastify();
+    it("should create a new post and return it with a 201 status code", async () => {
+        const app = Fastify()
 
-    const newPostPayload = {
-      img_url: "http://example.com/new-image.jpg",
-      caption: "A brand new post from our test!",
-    };
+        const newPostPayload = {
+            img_url: "http://example.com/new-image.jpg",
+            caption: "A brand new post from our test!",
+        }
 
     const createdPost = { ...newPostPayload, id: 5};
 
@@ -31,15 +31,15 @@ describe("POST /posts", () => {
       },
     });
 
-    app.register(postsRoutes);
+        app.register(postsRoutes)
 
-    const response = await app.inject({
-      method: "POST",
-      url: "/posts",
-      payload: newPostPayload,
-    });
+        const response = await app.inject({
+            method: "POST",
+            url: "/posts",
+            payload: newPostPayload,
+        })
 
-    expect(response.statusCode).toBe(201);
-    expect(JSON.parse(response.payload)).toEqual(createdPost);
-  });
-});
+        expect(response.statusCode).toBe(201)
+        expect(JSON.parse(response.payload)).toEqual(createdPost)
+    })
+})
