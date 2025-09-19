@@ -6,13 +6,16 @@ import { taggedRoutes } from "./modules/tagged/tagged.routes";
 import { highlightsRoutes } from "./modules/highlights/highlights.routes";
 import multipart from "@fastify/multipart";
 import path from "path";
-import fs from "fs/promises";
-import { randomUUID } from "crypto";
+import fastifyStatic from "@fastify/static";
 
 const fastify = Fastify({
   logger: true,
 });
 
+fastify.register(fastifyStatic, {
+  root: path.join(process.cwd(), "public", "uploads"),
+  prefix: "/uploads/",
+});
 // Register multipart plugin
 fastify.register(multipart);
 // Register database plugin

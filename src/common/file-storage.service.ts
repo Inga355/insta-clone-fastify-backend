@@ -16,7 +16,7 @@ export const fileStorageService = {
 
     await fs.writeFile(filePath, fileBuffer);
 
-    // Return the public URL path
-    return `/uploads/${uniqueFilename}`;
+    // Return the relative path including /public
+    return `http://localhost:3000/uploads/${uniqueFilename}`;
   },
 };

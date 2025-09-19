@@ -1,6 +1,7 @@
 import type { FastifyInstance, FastifyPluginAsync } from "fastify";
 import { postsService } from "./posts.service";
-import { z } from "zod"; // Import Zod for validation
+import { CreatePostDto } from "./posts.types";
+import { z } from "zod"; // Import Zod for validation 
 
 // Define a Zod schema for the expected form fields
 const createPostSchema = z.object({
@@ -72,8 +73,10 @@ const postsRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
       return reply.code(500).send({ message: "Failed to create post" });
     }
   });
-
-  // ... (existing GET /posts route and any other routes)
+  fastify.get("/posts", async (_request, _reply) => {
+    const posts = await service.getAll();
+    return posts;
+  });
 };
 
 export { postsRoutes };
