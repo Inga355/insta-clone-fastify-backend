@@ -13,7 +13,6 @@ const reelSchema = z.object({
   thumbnail_url: z.string().url(),
   caption: z.string().nullable(),
   views: z.number(),
-  rated_at: z.string().optional(), 
 });
 
 // This will be useful for validating the response from the `GET /posts` endpoint.
